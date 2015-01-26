@@ -8,6 +8,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class TestDeck {
+	/**
+	 * Testing that the deck has all the combinations of suits and card values.
+	 */
 	@Test
 	public void testAllSuitsValueInDeck() {
 		IDeck deck = new Deck();
@@ -29,6 +32,10 @@ public class TestDeck {
 		Assert.assertTrue(cards.size() == 0);
 	}
 	
+	/**
+	 * Testing the dealOneCard() method will remove the card from the deck, 
+	 * and return null when there's no card left in the deck.
+	 */
 	@Test
 	public void testDealOneCard() {
 		IDeck deck = new Deck(); 
@@ -44,6 +51,9 @@ public class TestDeck {
 		Assert.assertTrue(card == null);
 	}
 	
+	/**
+	 * Testing two decks (not shuffled) to be equal.
+	 */
 	@Test
 	public void testDeck() {
 		int numCards = Suit.values().length * CardValue.values().length;
@@ -67,6 +77,10 @@ public class TestDeck {
 		Assert.assertTrue(card1 == null && card2 == null);
 	}
 	
+	/**
+	 * Testing the shuffle() method.  Makes sure there's a percentage of allowable positions of the 
+	 * cards in the deck to be the same value.
+	 */
 	@Test
 	public void testShuffle() {
 		int numCards = Suit.values().length * CardValue.values().length;
@@ -90,6 +104,11 @@ public class TestDeck {
 		System.out.println("Actual number of cards that are the same => " + numCardsEqual);
 	}
 	
+	/**
+	 * Gets a list of cards from the deck.
+	 * @param deck - Input of what the list will return.
+	 * @return A list of cards from the deck.
+	 */
 	private List<Card> getCardsFromDeck(IDeck deck) {
 		List<Card> cards = new ArrayList<>();
 		while (true) {

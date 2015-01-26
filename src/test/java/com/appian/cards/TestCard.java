@@ -4,6 +4,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class TestCard {
+	/**
+	 * Testing the suit of the card to be equal.
+	 */
 	@Test
 	public void testCardSuit() {
 		Card card1 = new Card(Suit.CLUBS, CardValue.ACE);
@@ -14,6 +17,9 @@ public class TestCard {
 		Assert.assertTrue(!card1.equals(card2));
 	}
 	
+	/**
+	 * Testing the card value to be equal.
+	 */
 	@Test
 	public void testCardValue() {
 		Card card1 = new Card(Suit.CLUBS, CardValue.SEVEN);
@@ -24,6 +30,9 @@ public class TestCard {
 		Assert.assertTrue(!card1.equals(card2));
 	}
 	
+	/**
+	 * Testing the equality of cards. 
+	 */
 	@Test
 	public void testCards() {
 		Card card1a = new Card(Suit.HEARTS, CardValue.FIVE);
