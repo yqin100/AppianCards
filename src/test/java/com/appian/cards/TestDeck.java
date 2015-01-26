@@ -60,12 +60,18 @@ public class TestDeck {
 		IDeck deck1 = new Deck();
 		IDeck deck2 = new Deck();
 		
+		Assert.assertTrue(deck1.equals(deck2));
+		Assert.assertTrue(deck1.hashCode() == deck2.hashCode());		
+		
 		Card card1;
 		Card card2;
 		for (int i = 0; i < numCards; i++) {
 			card1 = deck1.dealOneCard();
 			card2 = deck2.dealOneCard();
 			
+			Assert.assertTrue(deck1.equals(deck2));
+			Assert.assertTrue(deck1.hashCode() == deck2.hashCode());		
+
 			Assert.assertTrue(card1 != null && card2 != null);
 			Assert.assertTrue(card1.equals(card2));
 			Assert.assertTrue(card1.hashCode() == card2.hashCode());
@@ -75,6 +81,9 @@ public class TestDeck {
 		card2 = deck2.dealOneCard();
 		
 		Assert.assertTrue(card1 == null && card2 == null);
+
+		Assert.assertTrue(deck1.equals(deck2));
+		Assert.assertTrue(deck1.hashCode() == deck2.hashCode());		
 	}
 	
 	/**
@@ -88,9 +97,15 @@ public class TestDeck {
 		int numCardsNotChangedAllowed = (int)Math.floor(numCards * percentageAllowed);
 		IDeck shuffleDeck = new Deck();
 		shuffleDeck.shuffle();
-		List<Card> shuffledCards = getCardsFromDeck(shuffleDeck);
 		IDeck deck = new Deck();
+
+		Assert.assertTrue(!shuffleDeck.equals(deck));
+		
+		List<Card> shuffledCards = getCardsFromDeck(shuffleDeck);
 		List<Card> cards = getCardsFromDeck(deck);
+		
+		// the deck is empty, it should be equal now
+		Assert.assertTrue(shuffleDeck.equals(deck));
 		
 		int numCardsEqual = 0;
 		for (int i = 0; i < numCards; i++) {
